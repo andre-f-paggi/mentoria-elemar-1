@@ -13,5 +13,9 @@ namespace MentoriaElemar1.ObjetosDeValor
 
             Valor = valor;
         }
+        public static Salario Novo(decimal valor)
+        {
+            return new Salario(valor);
+        }
     }
 }

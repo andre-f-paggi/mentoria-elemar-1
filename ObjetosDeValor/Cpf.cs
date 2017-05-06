@@ -9,7 +9,7 @@ namespace MentoriaElemar1.ObjetosDeValor
         private const int QUANTIDADE_CARACTERES_CPF = 11;
         public string CpfSemPontuacao { get; private set; }
         public string CpfComPontuacao => AplicarPontuacaoDeCpf(CpfSemPontuacao);
-        public bool ValidarCpf(string cpf)
+        public static bool ValidarCpf(string cpf)
         {
             var cpfSemPontuacao = SomenteNumeros(cpf);
 

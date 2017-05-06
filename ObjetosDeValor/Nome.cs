@@ -1,3 +1,5 @@
+using System;
+
 namespace MentoriaElemar1.ObjetosDeValor
 {
     public class Nome
@@ -11,10 +13,13 @@ namespace MentoriaElemar1.ObjetosDeValor
             return NomeCompleto;
         }
 
-        public Nome(string primeiroNome, string sobrenome)
+        public Nome(string primeiroNome, string sobrenome = null)
         {
+            if (primeiroNome.Length < 2)
+                throw new ArgumentException("Preencha o primeiro nome");
+
             PrimeiroNome = primeiroNome.Trim();
-            Sobrenome = sobrenome.Trim();
+            Sobrenome = sobrenome?.Trim() ?? "";
         }
     }
 }

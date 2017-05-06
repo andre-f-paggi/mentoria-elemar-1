@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MentoriaElemar1.ObjetosDeValor;
+using System;
 
 namespace MentoriaElemar1.Entidades
 {
@@ -13,10 +14,12 @@ namespace MentoriaElemar1.Entidades
             Nome = nome;
             return this;
         }
+
         public Empregado AtualizarCpf(Cpf cpf){
             Cpf = cpf;
             return this;
         }
+
         public Empregado AtualizarSalario(Salario salario){
             Salario = salario;
             return this;
@@ -26,18 +29,17 @@ namespace MentoriaElemar1.Entidades
         {
             
         }
-        public Empregado(Nome nome, Cpf cpf, Salario salario) 
-            => Novo(nome, cpf, salario);
+
+        public Empregado(Nome nome, Cpf cpf, Salario salario)
+        {
+            Id = Guid.NewGuid();
+            Nome = nome ?? throw new ArgumentException("O Nome é obrigatório");
+            Cpf = cpf ?? throw new ArgumentException("O CPF é obrigatório");
+            Salario = salario ?? throw new ArgumentException("O Salário é obrigatório");
+        }
 
         public static Empregado Novo(Nome nome, Cpf cpf, Salario salario){
-            var empregado = new Empregado
-            {
-                Id = Guid.NewGuid(),
-                Nome = nome,
-                Cpf = cpf,
-                Salario = salario
-            };
-            return empregado;
+            return new Empregado(nome, cpf, salario);
         }
     }
 }
